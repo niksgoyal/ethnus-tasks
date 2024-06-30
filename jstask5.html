@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <style>
+      .error {
+        color: red;
+        margin-left: 10px;
+      }
+      table {
+        width: 50%;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      td {
+        vertical-align: top;
+        width: 100px;
+        padding: 5px;
+      }
+      label {
+        display: inline-block;
+        width: 100px;
+      }
+      input,
+      textarea {
+        box-sizing: border-box;
+      }
+      button {
+        width: 100px;
+        margin-top: 10px;
+      }
+      .label {
+        text-align: right;
+        right: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">Contact Form</h2>
+    <form id="contactForm">
+      <table>
+        <tr>
+          <td class="label"><label for="name">Name: </label></td>
+          <td>
+            <input type="text" id="name" name="name" />
+            <span id="nameError" class="error"></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><label for="email">Email: </label></td>
+          <td>
+            <input type="text" id="email" name="email" />
+            <span id="emailError" class="error"></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><label for="website">Website: </label></td>
+          <td>
+            <input type="text" id="website" name="website" />
+            <span id="websiteError" class="error"></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><label for="message">Message: </label></td>
+          <td>
+            <textarea id="message" name="message"></textarea>
+            <span id="messageError" class="error"></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center">
+            <button type="button" onclick="validateForm()">Submit</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <script>
+      function validateForm() {
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("websiteError").textContent = "";
+        document.getElementById("messageError").textContent = "";
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let website = document.getElementById("website").value;
+        let message = document.getElementById("message").value;
+
+        let isValid = true;
+
+        if (name.trim() === "") {
+          document.getElementById("nameError").textContent = "Name is required";
+          isValid = false;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.trim() === "") {
+          document.getElementById("emailError").textContent =
+            "Email is required";
+          isValid = false;
+        } else if (!emailPattern.test(email)) {
+          document.getElementById("emailError").textContent =
+            "Invalid email format";
+          isValid = false;
+        }
+
+        const urlPattern =
+          /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+        if (
+          (website.trim() !== "" && !urlPattern.test(website)) ||
+          website.trim() === ""
+        ) {
+          document.getElementById("websiteError").textContent =
+            "Invalid website URL";
+          isValid = false;
+        }
+
+        if (message.trim() === "") {
+          document.getElementById("messageError").textContent =
+            "Message is required";
+          isValid = false;
+        }
+
+        if (isValid) {
+          alert("Form submitted successfully!");
+          document.getElementById("contactForm").reset();
+        }
+      }
+    </script>
+  </body>
+</html>

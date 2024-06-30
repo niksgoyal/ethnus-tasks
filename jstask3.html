@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiply/Divide</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+      .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        display: block;
+      }
+      button {
+        background-color: #0b0b0b;
+        color: #fff;
+        border: none;
+        width: 70px;
+        display: inline;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Multiply/Divide</h1>
+      <input type="number" id="input1" placeholder="Enter a Number" />
+      <input type="number" id="input2" placeholder="Enter a Number" />
+      <button onclick="multiply()">Multiply</button>
+      <button onclick="divide()">Divide</button>
+      <p id="output"></p>
+    </div>
+    <script>
+      function multiply() {
+        let num1 = document.getElementById("input1").value;
+        let num2 = document.getElementById("input2").value;
+        document.getElementById("output").innerText = num1 * num2;
+      }
+      function divide() {
+        let num1 = document.getElementById("input1").value;
+        let num2 = document.getElementById("input2").value;
+        document.getElementById("output").innerText = num1 / num2;
+      }
+    </script>
+  </body>
+</html>

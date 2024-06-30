@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      img {
+        position: relative;
+        height: 500px;
+      }
+      @keyframes moving {
+        0% {
+          left: 0%;
+        }
+        10% {
+          left: 5%;
+        }
+        20% {
+          left: 10%;
+        }
+        30% {
+          left: 15%;
+        }
+        40% {
+          left: 20%;
+        }
+        50% {
+          left: 25%;
+        }
+        60% {
+          left: 30%;
+        }
+        70% {
+          left: 35%;
+        }
+        80% {
+          left: 40%;
+        }
+        90% {
+          left: 45%;
+        }
+        100% {
+          left: 48%;
+        }
+      }
+      .animated {
+        animation: moving 10s linear infinite;
+      }
+      .reverse {
+        animation: moving 10s linear reverse;
+      }
+      button {
+        padding: 10px;
+        margin: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #29bb42;
+        color: #fff;
+        width: 150px;
+        display: inline;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Indian Railways</h1>
+    <img src="./train.jpeg" alt="Train" id="train" />
+    <div>
+      <button onclick="startAnimation()">Start</button>
+      <button onclick="stopAnimation()">Stop</button>
+      <button onclick="front()">Front</button>
+      <button onclick="reverse()">Reverse</button>
+    </div>
+    <script>
+      function startAnimation() {
+        document.getElementById("train").classList.add("animated");
+      }
+
+      function stopAnimation() {
+        document.getElementById("train").classList.remove("animated");
+        document.getElementById("train").classList.remove("reverse");
+      }
+      function reverse() {
+        document.getElementById("train").classList.add("reverse");
+      }
+      function front() {
+        document.getElementById("train").classList.add("animated");
+      }
+    </script>
+  </body>
+</html>
